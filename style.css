@@ -1,0 +1,29 @@
+@font-face{
+  font-family: Neue Type;
+  src: url('assets/NeueAlphabet.ttf') format("truetype-variations");
+  font-variation-settings: "wdth" 1 58;
+  font-variation-settings: "wght" 69 125;
+  font-variation-settings: "slnt" -25 25;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+canvas {
+  display: block;
+}
+
+p {
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-family: 'Neue Type';
+  height: 85%;
+  padding-left: 5%;
+  width: 90%;
+  font-size: 12vw;
+}
+
