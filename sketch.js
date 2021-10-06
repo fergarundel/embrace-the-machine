@@ -3,8 +3,8 @@
 // speechRec.interimResults = true;
 // speechRec.start();
 
-// let originalFreq=50;
-// let wave;
+let originalFreq=50;
+let wave;
 
 let poseNet;
 let pose;
@@ -34,6 +34,11 @@ function preload(){
   slantImg = loadImage('assets/slant.png');
 }
 
+
+wave = new p5.Oscillator();
+wave.setType('sine');
+wave.start();
+
 function setup() {
   createCanvas (windowWidth,windowHeight);
 
@@ -42,9 +47,6 @@ function setup() {
 
   imageMode(CENTER);
 
-  // wave = new p5.Oscillator();
-  // wave.setType('sine');
-  // wave.start();
 
   video = createCapture(VIDEO);
   video.hide();
@@ -159,10 +161,10 @@ function draw() {
     p.elt.style['font-variation-settings'] = `"wdth" ${VariableWidth},"slnt" ${VariableSlant},"wght" ${VariableWeight}`;  
 
 
-  // let weightFreq = map(VariableWeight,69,125,106,50);
+  let weightFreq = map(VariableWeight,69,125,106,50);
 
-  // wave.amp(2);
-  // wave.freq(weightFreq);
+  wave.amp(2);
+  wave.freq(weightFreq);
 
   }
 
