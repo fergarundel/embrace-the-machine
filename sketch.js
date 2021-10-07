@@ -77,7 +77,7 @@ function gotPoses(poses){
 function mousePressed(){
   if (IMG3){
     IMG3 = false;
-    posY = 0;
+    posY = -windowHeight/12;
   }
   if (IMG2){
     IMG2 = false;
@@ -97,7 +97,7 @@ function keyPressed(){
   if (keyCode === 32){
   if (IMG3){
     IMG3 = false;
-    posY = 0;
+    posY = -windowHeight/12;
   }
   if (IMG2){
     IMG2 = false;
