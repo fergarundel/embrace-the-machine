@@ -1,13 +1,9 @@
-// let speechRec = new p5.SpeechRec();
-// speechRec.continuous = true;
-// speechRec.interimResults = true;
-// speechRec.start();
-
-let originalFreq=50;
-let wave;
-
 let poseNet;
 let pose;
+
+let p;
+
+let on = true;
 
 let VariableWidth=18;
 let VariableSlant = 0;
@@ -34,27 +30,41 @@ function preload(){
   slantImg = loadImage('assets/slant.png');
 }
 
-
-wave = new p5.Oscillator();
-wave.setType('sine');
-wave.start();
-
 function setup() {
   createCanvas (windowWidth,windowHeight);
 
-  p = createP('embrace<br>the<br>machine');
+  let continuous = false;
+  let interim = true;
 
+  // let lang = 'en-US';
+  // let speechRec = new p5.SpeechRec(lang,gotSpeech);
 
+  // speechRec.onError = restart;
+  // speechRec.onEnd = restart;
+  // speechRec.start(continuous, interim);
+
+  p = createP('embrace the<br> machine');  
   imageMode(CENTER);
-
 
   video = createCapture(VIDEO);
   video.hide();
   poseNet = ml5.poseNet(video, modelLoaded);
   poseNet.on('pose',gotPoses);
+
+  // function gotSpeech(){
+  //   if (speechRec.resultValue){
+  //     p.remove();
+  //     p = createP(speechRec.resultString);
+  //     p.position(posX,posY);
+  //   } 
+  // }
+
+  function restart(){
+    speechRec.start(continuous, interim);
+  }
 }
 
-function modelLoaded(){v
+function modelLoaded(){
   console.log('poseNet Ready');
 }
 
@@ -67,7 +77,7 @@ function gotPoses(poses){
 function mousePressed(){
   if (IMG3){
     IMG3 = false;
-    posY = -windowHeight/6.5;
+    posY = 0;
   }
   if (IMG2){
     IMG2 = false;
@@ -87,7 +97,7 @@ function keyPressed(){
   if (keyCode === 32){
   if (IMG3){
     IMG3 = false;
-    posY = -windowHeight/8;
+    posY = 0;
   }
   if (IMG2){
     IMG2 = false;
@@ -105,17 +115,18 @@ function keyPressed(){
 }
 
 function draw() {
+
+  let splitString = split(p.elt.innerText,'');
+  let dynamicSize = constrain(map(splitString.length,1,11,width*0.277778,width*0.083333),width*0.083333,width*0.277778);
+
   background(0);
+
+  print(p);
 
   if (IMG0){image(introImg,0.5*width, 0.5*height, scale*width, scale*introImg.height*width/introImg.width);} 
   if (IMG1){image(widthImg,0.5*width, 0.5*height, scale*width, scale*widthImg.height*width/widthImg.width);} 
   if (IMG2){image(weightImg,0.5*width, 0.5*height, scale*width, scale*weightImg.height*width/weightImg.width);}
   if (IMG3){image(slantImg,0.5*width, 0.5*height, scale*width, scale*slantImg.height*width/slantImg.width);}
-
-  // SPEECH RECOGNITON
-  // if (speechRec.resultValue){ 
-  //   p = createP(speechRec.resultString);
-  // }
 
   if (pose){
 
@@ -159,16 +170,11 @@ function draw() {
     }
 
     p.elt.style['font-variation-settings'] = `"wdth" ${VariableWidth},"slnt" ${VariableSlant},"wght" ${VariableWeight}`;  
-
-
-  let weightFreq = map(VariableWeight,69,125,106,50);
-
-  wave.amp(2);
-  wave.freq(weightFreq);
-
   }
 
   p.style('align', 'center');
+  p.style('font-size' ,'150px');
+  p.addClass('noselect');
   p.position(posX,posY);
 
 }

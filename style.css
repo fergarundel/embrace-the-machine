@@ -9,6 +9,8 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow:hidden;
   background-color: black;
 }
 
@@ -17,13 +19,23 @@ canvas {
 }
 
 p {
+  display:block;
   color: white;
   background-color: black;
   text-align: center;
   font-family: 'Neue Type';
-  height: 85%;
-  padding-left: 5%;
-  width: 90%;
-  font-size: 12vw;
+
+  padding-top: 10%;
+  padding-left: 10%;
+  width: 80%
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
