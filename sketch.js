@@ -84,8 +84,12 @@ function mousePressed(){
   }
   if (IMG3){
     IMG3 = false;
+<<<<<<< HEAD
     IMG4 =true;
 
+=======
+    posY = -windowHeight/12;
+>>>>>>> ca95330b8467384d273c7ec4b83b30c654b90c89
   }
   if (IMG2){
     IMG2 = false;
@@ -109,7 +113,11 @@ function keyPressed(){
     }
   if (IMG3){
     IMG3 = false;
+<<<<<<< HEAD
     IMG4 = true;
+=======
+    posY = -windowHeight/12;
+>>>>>>> ca95330b8467384d273c7ec4b83b30c654b90c89
   }
   if (IMG2){
     IMG2 = false;
