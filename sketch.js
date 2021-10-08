@@ -17,6 +17,7 @@ let IMG0 = true;
 let IMG1 = false;
 let IMG2 = false;
 let IMG3 = false;
+let IMG4 = false;
 
 let posX = 0;
 let posY = -5000;
@@ -28,6 +29,7 @@ function preload(){
   widthImg = loadImage('assets/width.png');
   weightImg = loadImage('assets/weight.png');
   slantImg = loadImage('assets/slant.png');
+  beginImg = loadImage('assets/begin.png');
 }
 
 function setup() {
@@ -75,9 +77,15 @@ function gotPoses(poses){
 }
 
 function mousePressed(){
+
+  if (IMG4){
+    IMG4 = false;
+    posY = -windowHeight/12;
+  }
   if (IMG3){
     IMG3 = false;
-    posY = 0;
+    IMG4 =true;
+
   }
   if (IMG2){
     IMG2 = false;
@@ -95,9 +103,13 @@ function mousePressed(){
 
 function keyPressed(){
   if (keyCode === 32){
+    if (IMG4){
+      IMG4 = false;
+      posY = -windowHeight/12;
+    }
   if (IMG3){
     IMG3 = false;
-    posY = 0;
+    IMG4 = true;
   }
   if (IMG2){
     IMG2 = false;
@@ -127,6 +139,8 @@ function draw() {
   if (IMG1){image(widthImg,0.5*width, 0.5*height, scale*width, scale*widthImg.height*width/widthImg.width);} 
   if (IMG2){image(weightImg,0.5*width, 0.5*height, scale*width, scale*weightImg.height*width/weightImg.width);}
   if (IMG3){image(slantImg,0.5*width, 0.5*height, scale*width, scale*slantImg.height*width/slantImg.width);}
+  if (IMG4){image(beginImg,0.5*width, 0.5*height, scale*width, scale*slantImg.height*width/slantImg.width);}
+
 
   if (pose){
 
