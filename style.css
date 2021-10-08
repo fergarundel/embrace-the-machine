@@ -1,0 +1,41 @@
+@font-face{
+  font-family: Neue Type;
+  src: url('assets/NeueAlphabet.ttf') format("truetype-variations");
+  font-variation-settings: "wdth" 1 58;
+  font-variation-settings: "wght" 69 125;
+  font-variation-settings: "slnt" -25 25;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow:hidden;
+  background-color: black;
+}
+
+canvas {
+  display: block;
+}
+
+p {
+  display:block;
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-family: 'Neue Type';
+
+  padding-top: 10%;
+  padding-left: 10%;
+  width: 80%
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
